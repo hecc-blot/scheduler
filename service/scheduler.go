@@ -10,7 +10,7 @@ import (
 	"github.com/robfig/cron/v3"
 	"go.uber.org/zap"
 
-	"github.com/hecc-blot/framework/contract/log"
+	"github.com/hecc-blot/core/contract/log"
 	schedulerConf "github.com/hecc-blot/scheduler/config"
 	schedulerContract "github.com/hecc-blot/scheduler/contract"
 	trace "github.com/hecc-blot/trace/contract"

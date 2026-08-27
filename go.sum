@@ -1,7 +1,7 @@
-github.com/hecc-blot/framework v0.1.2 h1:DdCqH3X6jYVVEYOlfwfksXVklOju55Z/9Cv4VA+YVZY=
-github.com/hecc-blot/framework v0.1.2/go.mod h1:1UGUEaUS471HYk5ehGC+JEcETwh5qKO1Onnr7pXGy+s=
-github.com/hecc-blot/trace v0.1.2 h1:4b8rx1zySuUdpn+F3bDUi5NchOzcERWwF9SZ0wTYXKg=
-github.com/hecc-blot/trace v0.1.2/go.mod h1:pBIy8LXns+dUrDRr4MPbR1INsL1dCbCiWmejK2DZywk=
+github.com/hecc-blot/core v0.1.4 h1:FPKkhiwxxOBbwk+whpUwh1wDrW3ql3NQM2v+naooXlw=
+github.com/hecc-blot/core v0.1.4/go.mod h1:Nlw9oi5mvVJSjkE9LXCnGTTXgOTvYKdREYrEddoVXVE=
+github.com/hecc-blot/trace v0.1.3 h1:3jnHupGQOtxxvS9L2kX5OT1OohRv+XEEC5XwEKyZ5Vk=
+github.com/hecc-blot/trace v0.1.3/go.mod h1:Lhqp7viMML6XdtEZp0uL073xJqIG6EMRlUWWl4Ohx2g=
 github.com/robfig/cron/v3 v3.0.1 h1:WdRxkvbJztn8LMz/QEvLN5sBU+xKpSqwwUO1Pjr4qDs=
 github.com/robfig/cron/v3 v3.0.1/go.mod h1:eQICP3HwyT7UooqI/z+Ov+PtYAWygg1TEWWzGIFLtro=
 github.com/stretchr/testify v1.12.1 h1:EuwCh5fleGS7H32xRwO3wRGT7DxrDhLAT6FF8MpWDWE=
