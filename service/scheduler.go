@@ -41,7 +41,7 @@ type schedulerSvc struct {
 // NewScheduler 创建调度器。logger / traceSvc / guard 均可为 nil。
 func NewScheduler(cfg *schedulerConf.Config, logger log.ILog, traceSvc trace.ITrace, guard schedulerContract.IJobGuard) (schedulerContract.IScheduler, error) {
 	if cfg == nil {
-		return nil, fmt.Errorf("scheduler: 配置不能为空")
+		return nil, fmt.Errorf("scheduler: config must not be nil")
 	}
 	c := schedulerConf.Normalize(*cfg)
 
@@ -68,16 +68,16 @@ func NewScheduler(cfg *schedulerConf.Config, logger log.ILog, traceSvc trace.ITr
 // Add 注册任务。
 func (s *schedulerSvc) Add(name string, spec string, job schedulerContract.Job) error {
 	if name == "" {
-		return fmt.Errorf("scheduler: 任务名不能为空")
+		return fmt.Errorf("scheduler: job name must not be empty")
 	}
 	if job == nil {
-		return fmt.Errorf("scheduler: 任务 %q 不能为 nil", name)
+		return fmt.Errorf("scheduler: job %q must not be nil", name)
 	}
 
 	s.mu.Lock()
 	if _, exists := s.names[name]; exists {
 		s.mu.Unlock()
-		return fmt.Errorf("scheduler: 任务 %q 已存在", name)
+		return fmt.Errorf("scheduler: job %q already exists", name)
 	}
 	s.names[name] = struct{}{}
 	s.mu.Unlock()
@@ -88,7 +88,7 @@ func (s *schedulerSvc) Add(name string, spec string, job schedulerContract.Job) 
 		s.mu.Lock()
 		delete(s.names, name)
 		s.mu.Unlock()
-		return fmt.Errorf("scheduler: 任务 %q 的 cron 表达式非法: %w", name, err)
+		return fmt.Errorf("scheduler: invalid cron expression for job %q: %w", name, err)
 	}
 	return nil
 }
@@ -121,7 +121,7 @@ func loadLocation(name string) (*time.Location, error) {
 	default:
 		loc, err := time.LoadLocation(name)
 		if err != nil {
-			return nil, fmt.Errorf("scheduler: 无效时区 %q: %w", name, err)
+			return nil, fmt.Errorf("scheduler: invalid timezone %q: %w", name, err)
 		}
 		return loc, nil
 	}
