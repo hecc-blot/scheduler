@@ -14,8 +14,9 @@ type JobFunc func(ctx context.Context) error
 func (f JobFunc) Run(ctx context.Context) error { return f(ctx) }
 
 // IJobGuard 多副本执行守卫：决定本节点是否应执行某任务。
-// 单实例部署传 nil（每个任务都执行）；多副本部署时注入基于分布式锁的实现
-// （依赖 cache 原子原语 SetNX，待 feature.md #1 落地后提供）。
+// 单实例部署传 nil（每个任务都执行）；多副本部署时由业务方注入基于分布式锁的实现
+// —— 本模块不内置实现（leaf 模块间不互相依赖具体实现），业务侧用 lock 的
+// ILocker.TryLock 包一层即可，完整示例见 README「多副本守卫」一节。
 type IJobGuard interface {
 	// TryAcquire 尝试获取执行权，返回释放闭包（任务结束后调用）。
 	// acquired=false 表示其他节点正在执行，本次跳过。
